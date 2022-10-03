@@ -1,9 +1,11 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne } from "typeorm";
+import { Document } from '../../document/entities/document.entity';
 
 @Entity()
 @ObjectType()
 export class User {
+
     @PrimaryGeneratedColumn()
     @Field(type => Int)
     id: number;   
@@ -50,5 +52,9 @@ export class User {
     @Column()
     @Field()     
     verificationToken: string;
+    
+    @OneToOne(() => Document, (document) => document.user )
+    @Field(type => Document, { nullable: true }) 
+    document: Document;
 
 }

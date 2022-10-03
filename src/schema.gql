@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Document {
+  id: Int!
+  document: String!
+  placeExpedition: String!
+  dateExpedition: String!
+  user: User
+}
+
 type User {
   id: Int!
   lastName: String!
@@ -14,13 +22,7 @@ type User {
   email: String!
   emailVerified: Boolean!
   verificationToken: String!
-}
-
-type Document {
-  id: Int!
-  document: String!
-  placeExpedition: String!
-  dateExpedition: String!
+  document: Document
 }
 
 type Query {
@@ -50,4 +52,5 @@ input CreateDocumentInput {
   document: String!
   placeExpedition: String!
   dateExpedition: String!
+  userId: Int!
 }

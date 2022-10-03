@@ -1,4 +1,4 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, MaxLength } from "class-validator";
 
 @InputType()
@@ -19,5 +19,8 @@ export class CreateDocumentInput {
   @Field(type =>String)
   @IsNotEmpty()
   dateExpedition: Date;
+
+  @Field(type => Int)  
+  userId: number;
 
 }
