@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  lastName: String!
+  name: String!
+  isMilitar: Boolean!
+  timeCreate: String!
+  isTemporal: Boolean!
+  userName: String!
+  password: String!
+  email: String!
+  emailVerified: Boolean!
+  verificationToken: String!
+}
+
+type Query {
+  users: [User!]!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  lastName: String!
+  name: String!
+  isMilitar: Boolean!
+  timeCreate: String!
+  isTemporal: Boolean!
+  userName: String!
+  password: String!
+  email: String!
+  emailVerified: Boolean!
+  verificationToken: String!
+}
