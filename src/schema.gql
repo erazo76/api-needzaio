@@ -16,12 +16,21 @@ type User {
   verificationToken: String!
 }
 
+type Document {
+  id: Int!
+  document: String!
+  placeExpedition: String!
+  dateExpedition: String!
+}
+
 type Query {
   users: [User!]!
+  documents: [Document!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
+  createDocument(createDocumentInput: CreateDocumentInput!): Document!
 }
 
 input CreateUserInput {
@@ -35,4 +44,10 @@ input CreateUserInput {
   email: String!
   emailVerified: Boolean!
   verificationToken: String!
+}
+
+input CreateDocumentInput {
+  document: String!
+  placeExpedition: String!
+  dateExpedition: String!
 }

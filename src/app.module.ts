@@ -7,6 +7,7 @@ import { enviroments } from './enviroments';
 import { UserModule } from './user/user.module';
 import config from './config';
 import { DatabaseModule } from './database/database.module'
+import { DocumentModule } from './document/document.module';
 
 
 @Module({
@@ -21,7 +22,8 @@ import { DatabaseModule } from './database/database.module'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     UserModule,
-    DatabaseModule
+    DatabaseModule,
+    DocumentModule
   ],
   controllers: [],
   providers: [],

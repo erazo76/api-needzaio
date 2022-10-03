@@ -21,9 +21,9 @@ export class CreateUserInput {
     @IsNotEmpty()
     isMilitar: boolean;
     
-    @Field()
+    @Field(type =>String)
     @IsNotEmpty()
-    timeCreate: string;
+    timeCreate: Date;
     
     @Field()
     @IsBoolean()

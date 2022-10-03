@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import { Entity, PrimaryGeneratedColumn, Column, Unique, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
 
 @Entity()
 @ObjectType()
@@ -8,11 +8,11 @@ export class User {
     @Field(type => Int)
     id: number;   
     
-    @Column()
+    @Column({ type: 'varchar', length: 20 })
     @Field()
     lastName: string;
     
-    @Column()
+    @Column({ type: 'varchar', length: 20 })
     @Field()   
     name: string;
     
@@ -20,23 +20,26 @@ export class User {
     @Field()    
     isMilitar: boolean;
     
-    @Column()   
-    @Field()    
-    timeCreate: string;
+    @CreateDateColumn({
+        type: 'timestamptz',
+        default: () => 'CURRENT_TIMESTAMP'
+    })   
+    @Field(type => String)    
+    timeCreate: Date;
     
     @Column()
     @Field()        
     isTemporal: boolean;
     
-    @Column()
+    @Column({ type: 'varchar', length: 20 })
     @Field()    
     userName: string;
     
-    @Column()
+    @Column({ type: 'varchar', length: 15 })
     @Field()    
     password: string;    
     
-    @Column()
+    @Column({ type: 'varchar', length: 100 })
     @Field()    
     email: string;
     
