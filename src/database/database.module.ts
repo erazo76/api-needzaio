@@ -1,15 +1,27 @@
 import { Global, Module } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm';
+import config from 'src/config';
 
 @Global()
 @Module({
     imports:[
-        TypeOrmModule.forRoot({
-            type: 'sqlite',
-            database: ':memory:',
-            entities: ['dist/**/*.entity{.ts,.js}'],
-            synchronize: true,
-        }),
+        TypeOrmModule.forRootAsync({
+            inject: [config.KEY],
+            useFactory: (configService: ConfigType<typeof config>) => {
+              const { user, host, dbName, password, port } = configService.postgres;
+              return {
+                type: 'postgres',
+                host,
+                port,
+                username: user,
+                password,
+                database: dbName,
+                autoLoadEntities: true,
+                synchronize: true,
+              };
+            },
+          }),     
     ],
     exports:[TypeOrmModule],
 })

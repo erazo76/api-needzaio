@@ -2,7 +2,6 @@ import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { Entity, PrimaryGeneratedColumn, Column, Unique, CreateDateColumn } from "typeorm";
 
 @Entity()
-@Unique(['email'])
 @ObjectType()
 export class User {
     @PrimaryGeneratedColumn()
