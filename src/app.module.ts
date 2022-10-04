@@ -9,6 +9,8 @@ import config from './config';
 import { DatabaseModule } from './database/database.module'
 import { DocumentModule } from './document/document.module';
 import { TypeDocumentModule } from './type-document/type-document.module';
+import { InfoContactModule } from './info-contact/info-contact.module';
+import { CountryModule } from './country/country.module';
 
 
 @Module({
@@ -25,7 +27,9 @@ import { TypeDocumentModule } from './type-document/type-document.module';
     UserModule,
     DatabaseModule,
     DocumentModule,
-    TypeDocumentModule
+    TypeDocumentModule,
+    InfoContactModule,
+    CountryModule
   ],
   controllers: [],
   providers: [],
