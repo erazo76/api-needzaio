@@ -2,6 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Country {
+  id: Int!
+  countryCode: String!
+  countryName: String!
+}
+
+type InfoContact {
+  id: Int!
+  address: String!
+  city: String!
+  phone: String!
+  celPhone: String!
+  emergencyName: String!
+  emergencyPhone: String!
+  country: Country
+  user: User
+}
+
 type User {
   id: Int!
   lastName: String!
@@ -16,28 +34,34 @@ type User {
   verificationToken: String!
 }
 
+type TypeDocument {
+  id: Int!
+  nameTypeDocument: String!
+}
+
 type Document {
   id: Int!
   document: String!
   placeExpedition: String!
   dateExpedition: String!
-}
-
-type TypeDocument {
-  id: Int!
-  nameTypeDocument: String!
+  typeDocument: TypeDocument
+  user: User
 }
 
 type Query {
   users: [User!]!
   documents: [Document!]!
   typeDocuments: [TypeDocument!]!
+  infoContacts: [InfoContact!]!
+  countries: [Country!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   createDocument(createDocumentInput: CreateDocumentInput!): Document!
   createTypeDocument(createTypeDocumentInput: CreateTypeDocumentInput!): TypeDocument!
+  createInfoContact(createInfoContactInput: CreateInfoContactInput!): InfoContact!
+  createCountry(createCountryInput: CreateCountryInput!): Country!
 }
 
 input CreateUserInput {
@@ -57,8 +81,26 @@ input CreateDocumentInput {
   document: String!
   placeExpedition: String!
   dateExpedition: String!
+  typeDocumentId: Int!
+  userId: Int!
 }
 
 input CreateTypeDocumentInput {
   nameTypeDocument: String!
+}
+
+input CreateInfoContactInput {
+  address: String!
+  city: String!
+  phone: String!
+  celPhone: String!
+  emergencyName: String!
+  emergencyPhone: String!
+  countryId: Int!
+  userId: Int!
+}
+
+input CreateCountryInput {
+  countryCode: String!
+  countryName: String!
 }

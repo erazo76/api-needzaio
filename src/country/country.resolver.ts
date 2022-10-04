@@ -3,17 +3,17 @@ import { CountryService } from './country.service';
 import { Country } from './entities/country.entity';
 import { CreateCountryInput } from './dto/create-country.input';
 
-@Resolver(() => Country)
+@Resolver(of => Country)
 export class CountryResolver {
   constructor(private readonly countryService: CountryService) {}
 
-  @Mutation(() => Country)
+  @Mutation(returns => Country)
   createCountry(@Args('createCountryInput') createCountryInput: CreateCountryInput) {
-    return this.countryService.create(createCountryInput);
+    return this.countryService.createCountry(createCountryInput);
   }
 
-  @Query(() => [Country], { name: 'country' })
-  findAll() {
+  @Query(returns => [Country])
+  countries() {
     return this.countryService.findAll();
   }
 

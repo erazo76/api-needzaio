@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Document } from 'src/document/entities/document.entity';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
 
 @Entity()
 @ObjectType()
@@ -14,8 +14,7 @@ export class TypeDocument {
   @Field()
   nameTypeDocument: string;
 
- /* @OneToOne(() => Document, (document) => document.typeDocument )
-  @Field(type => Document, { nullable: true }) 
-  document: Document;*/
+ @OneToOne(() => Document, (document) => document.typeDocument )  
+ document: Document;
 
 }

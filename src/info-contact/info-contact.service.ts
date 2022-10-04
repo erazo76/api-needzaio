@@ -1,14 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateInfoContactInput } from './dto/create-info-contact.input';
+import { InfoContact } from './entities/info-contact.entity';
 
 @Injectable()
 export class InfoContactService {
-  createInfoContact(createInfoContactInput: CreateInfoContactInput) {
-    return 'This action adds a new infoContact';
-  }
+  logger: Logger;  
+  constructor(@InjectRepository(InfoContact) private infoContactRepository: Repository<InfoContact>) 
+    { this.logger = new Logger('Reports Service'); }
 
-  findAll() {
-    return `This action returns all infoContact`;
-  }
+    async createInfoContact(createInfoContactInput: CreateInfoContactInput): Promise<InfoContact>{ 
+      try{      
+          const newInfoContact = this.infoContactRepository.create(createInfoContactInput);
+          return this.infoContactRepository.save(newInfoContact);                
+      } catch (e) {
+        this.logger.log(e);
+      } 
+    }
 
+    async findAll(): Promise<InfoContact[]>{  
+      return this.infoContactRepository.find();
+    }
 }

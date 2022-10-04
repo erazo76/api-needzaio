@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { InfoContact } from "src/info-contact/entities/info-contact.entity";
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne } from "typeorm";
 import { Document } from '../../document/entities/document.entity';
 
@@ -53,8 +54,10 @@ export class User {
     @Field()     
     verificationToken: string;
     
-  /*  @OneToOne(() => Document, (document) => document.user )
-    @Field(type => Document, { nullable: true }) 
+  /*@OneToOne(() => Document, (document) => document.user )    
     document: Document;*/
+
+    @OneToOne(() => InfoContact, (infoContact) => infoContact.country )  
+    infoContact: InfoContact;
 
 }

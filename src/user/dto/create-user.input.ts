@@ -1,5 +1,5 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsBoolean, IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { IsBoolean, IsEmail, IsNotEmpty, IsString, Matches, MaxLength } from "class-validator";
 
 @InputType()
 export class CreateUserInput {
@@ -23,6 +23,7 @@ export class CreateUserInput {
     
     @Field(type =>String)
     @IsNotEmpty()
+    @Matches(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)
     timeCreate: Date;
     
     @Field()
