@@ -20,7 +20,10 @@ export class CreateDocumentInput {
   @IsNotEmpty()
   dateExpedition: Date;
 
-  @Field(type => Int)  
+ /* @Field(type => Int)  
   userId: number;
+
+  @Field(type => Int)  
+  typeDocumentId: number;*/
 
 }

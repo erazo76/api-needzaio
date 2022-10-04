@@ -2,14 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Document {
-  id: Int!
-  document: String!
-  placeExpedition: String!
-  dateExpedition: String!
-  user: User
-}
-
 type User {
   id: Int!
   lastName: String!
@@ -22,17 +14,30 @@ type User {
   email: String!
   emailVerified: Boolean!
   verificationToken: String!
-  document: Document
+}
+
+type Document {
+  id: Int!
+  document: String!
+  placeExpedition: String!
+  dateExpedition: String!
+}
+
+type TypeDocument {
+  id: Int!
+  nameTypeDocument: String!
 }
 
 type Query {
   users: [User!]!
   documents: [Document!]!
+  typeDocuments: [TypeDocument!]!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   createDocument(createDocumentInput: CreateDocumentInput!): Document!
+  createTypeDocument(createTypeDocumentInput: CreateTypeDocumentInput!): TypeDocument!
 }
 
 input CreateUserInput {
@@ -52,5 +57,8 @@ input CreateDocumentInput {
   document: String!
   placeExpedition: String!
   dateExpedition: String!
-  userId: Int!
+}
+
+input CreateTypeDocumentInput {
+  nameTypeDocument: String!
 }

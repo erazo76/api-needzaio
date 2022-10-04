@@ -37,7 +37,7 @@ export class User {
     @Field()    
     userName: string;
     
-    @Column({ type: 'varchar', length: 15 })
+    @Column({ type: 'varchar', length: 255 })
     @Field()    
     password: string;    
     
@@ -53,8 +53,8 @@ export class User {
     @Field()     
     verificationToken: string;
     
-    @OneToOne(() => Document, (document) => document.user )
+  /*  @OneToOne(() => Document, (document) => document.user )
     @Field(type => Document, { nullable: true }) 
-    document: Document;
+    document: Document;*/
 
 }

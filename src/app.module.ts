@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import config from './config';
 import { DatabaseModule } from './database/database.module'
 import { DocumentModule } from './document/document.module';
+import { TypeDocumentModule } from './type-document/type-document.module';
 
 
 @Module({
@@ -23,7 +24,8 @@ import { DocumentModule } from './document/document.module';
     }),
     UserModule,
     DatabaseModule,
-    DocumentModule
+    DocumentModule,
+    TypeDocumentModule
   ],
   controllers: [],
   providers: [],
